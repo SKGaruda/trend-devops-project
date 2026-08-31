@@ -1,0 +1,39 @@
+# Git
+.git
+.gitignore
+.github
+
+# Terraform
+terraform/.terraform
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.tfvars
+
+# Jenkins
+Jenkinsfile
+
+# Kubernetes
+k8s/
+
+# Monitoring
+monitoring/
+
+# Documentation
+README.md
+
+# Screenshots
+screenshots/
+
+# Logs
+*.log
+
+# Node dependencies
+node_modules/
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
