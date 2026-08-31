@@ -1,11 +1,16 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = 'suryakb/trend-app'
+        DOCKER_TAG = "${BUILD_NUMBER}"
+    }
+
     stages {
 
-        stage('Test Environment') {
+        stage('Checkout') {
             steps {
-                sh 'echo Jenkins pipeline is working'
+                checkout scm
             }
         }
 
@@ -13,11 +18,51 @@ pipeline {
             steps {
                 sh 'git --version'
                 sh 'docker --version'
-                sh 'terraform --version'
-                sh 'kubectl version --client'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh '''
+                    docker build \
+                    -t ${DOCKER_IMAGE}:${DOCKER_TAG} \
+                    -t ${DOCKER_IMAGE}:latest \
+                    .
+                '''
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockerhub-credentials',
+                        usernameVariable: 'DOCKER_USERNAME',
+                        passwordVariable: 'DOCKER_PASSWORD'
+                    )
+                ]) {
+                    sh '''
+                        echo "$DOCKER_PASSWORD" | docker login \
+                        -u "$DOCKER_USERNAME" \
+                        --password-stdin
+
+                        docker push ${DOCKER_IMAGE}:${DOCKER_TAG}
+                        docker push ${DOCKER_IMAGE}:latest
+
+                        docker logout
+                    '''
+                }
             }
         }
     }
-}
 
-// Jenkins CI Test
+    post {
+        success {
+            echo 'Docker image built and pushed successfully.'
+        }
+
+        failure {
+            echo 'Docker build or push failed.'
+        }
+    }
+}
