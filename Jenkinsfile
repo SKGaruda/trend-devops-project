@@ -65,16 +65,7 @@ pipeline {
             echo 'Docker build or push failed.'
         }
 
-        stage('Test EKS Access') {
-    steps {
-        sh '''
-            aws sts get-caller-identity
-            kubectl version --client
-            kubectl get nodes
-            kubectl get pods -A
-        '''
-    }
-}
+        
     }
     
 }
