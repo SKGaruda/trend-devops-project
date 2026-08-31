@@ -563,43 +563,6 @@ an AWS LoadBalancer, with **2 Kubernetes replicas running on EKS** and
 
 ------------------------------------------------------------------------
 
-# 💼 Resume Description
-
-### AWS DevOps CI/CD Project -- Trendify
-
-**Technologies:** AWS, EC2, EKS, Kubernetes, Docker, Docker Hub,
-Jenkins, Terraform, Prometheus, Grafana
-
--   Containerized and deployed a web application using Docker and Amazon
-    EKS.
--   Built Jenkins CI/CD automation to build and publish Docker images
-    and deploy application updates to Kubernetes.
--   Provisioned AWS infrastructure using Terraform and implemented
-    repeatable Infrastructure as Code practices.
--   Configured Kubernetes Deployments with multiple replicas and exposed
-    the application through an AWS LoadBalancer.
--   Implemented Prometheus and Grafana monitoring to visualize
-    Kubernetes CPU, memory, namespace, and workload metrics.
-
-------------------------------------------------------------------------
-
-# 🎤 Interview Explanation
-
-A concise interview explanation:
-
-> "I built an end-to-end AWS DevOps project for a containerized web
-> application called Trendify. I used Docker for containerization and
-> Docker Hub as the image registry. Terraform was used for
-> infrastructure provisioning, while Jenkins on an EC2 instance
-> automated the CI/CD workflow. The application was deployed to Amazon
-> EKS using Kubernetes with two replicas and exposed through a
-> LoadBalancer. Finally, I integrated Prometheus and Grafana to monitor
-> Kubernetes CPU, memory, namespace, and workload metrics. This project
-> gave me hands-on experience across the complete CI/CD, cloud
-> infrastructure, container orchestration, and monitoring lifecycle."
-
-------------------------------------------------------------------------
-
 # 🧹 Cleanup / Cost Control
 
 When the project is no longer required, remember to remove billable AWS
