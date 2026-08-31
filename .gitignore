@@ -1,12 +1,14 @@
 # =========================
 # Terraform
 # =========================
-
 .terraform/
 *.tfstate
 *.tfstate.*
+crash.log
+crash.*.log
 *.tfvars
-
+*.tfvars.json
+*.pem
 # Terraform lock file
 # Keep this file committed for reproducible provider versions
 # .terraform.lock.hcl should NOT be ignored
